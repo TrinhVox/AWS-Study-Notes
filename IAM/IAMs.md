@@ -11,6 +11,33 @@ IAM Policy dùng JSON, mỗi statement gồm có:
 
 4. Resources - dành cho tài nguyên của AWS, có thể là tất cả các tài nguyên ("*") hoặc là một list các tài nguyên - ["arn:aws:s3:::catgifs", "arn:aws:s3:::catgifs/*" ]
 
+Sample:
+
+```
+{
+   "Version":"2012-10-17",
+   "Statement":[
+      {
+         "Sid":"statement1",
+         "Effect":"Allow",
+         "Action":[
+            "s3:*"
+         ],
+         "Resource":[
+            "arn:aws:s3:::*"
+         ]
+       },
+       {
+         "Effect": "Deny",
+         "Action": "s3:*",
+         "Resource": [
+           "arn:aws:s3:::catgifs", "arn:aws:s3:::catgifs/*"
+         ]
+       }
+    ]
+}
+```
+
 Nếu các statements có chính sách không được chia cách rõ ràng, thì sẽ ưu tiên theo thứ tự sau:
 1. Explicitly DENY - nếu statement rõ ràng tự chối truy cập tài nguyên và hoạt động trong tài nguyên
 2. Explicitly ALLOW - nếu statement rõ ràng cho phép truy cập tài nguyên
@@ -94,6 +121,26 @@ AWS Organisation có thể được tạo bởi một tài khoản AWS thường
 - Policies này không ảnh hưởng với Management Account
 - SCP dùng để giới hạn hoạt động của các tài khoản trong cơ quan
 - SCP chỉ tạo giới hạn chứ không được cho quyền
+
+Sample:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Deny",
+            "Action": "s3:*",
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## CloudWatch Logs
 
