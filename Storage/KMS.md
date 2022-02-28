@@ -30,7 +30,7 @@ Có hai loại CMKs:
 1. AWS Managed - là keys được tạo ra bởi dịch vụ của AWS vd như S3
 2. Customer Managed - là keys được tạo bởi người dùng
 
-CMKs hỗ trợ thay đổi và xoay các vật liệu dùng để mã hoá dữ liệu mỗi 3 năm với Customer Managed thì rotation là không bắt buộc.
+CMKs hỗ trợ thay đổi và xoay các vật liệu dùng để mã hoá dữ liệu mỗi 3 năm với Customer Managed thì rotation là không bắt buộc và có thể đặt rotation mỗi năm. 
 
 KMS sẽ lưu Backing Key (là vật liệu để mã hoá và giải mã dữ liệu hiện tại) và các Backing Key dùng trước đây những đã được xoay (rotation).
 
