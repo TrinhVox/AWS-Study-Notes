@@ -62,7 +62,7 @@ Mỗi VPC đều có một VPC router
 
 VPC Router dùng để chuyển dữ liệu bên trong VPC qua các subnets
 
-VPC Router được chỉ định vởi các route table (bản chỉ hướng), mỗi subnet đều có 1 bản
+VPC Router được chỉ định bởi các route table (bản chỉ hướng), mỗi subnet đều có 1 bản
 
 VPC có một route table chính
 
