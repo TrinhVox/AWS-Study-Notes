@@ -164,4 +164,36 @@ NAT Gateway tính phí bao gồm:
 
 NAT Gateway không thể áp dụng SG, chỉ có thể dùng NACL với NAT Gateway
 
+## VPC Flow Logs
+Chỉ có metadata, không có content
 
+Có thể được đings kèm với VPC - tất cả ENIs trong VPC
+    - Hoặc tất cả ENIs trong subnet
+    - ENI trực tiếp
+
+Flow logs không phải thòi gian thực 
+
+Log được gửi tới S3 hoặc cloudwatch logs hoặc Athena
+
+## VPC Endpoints
+
+### Gateway Endpoints
+- Cho phép truy cập private tới S3 và DynamoDB
+- Thêm Prefix List vào route table để dẫn tới Gateway Endpoint
+- HA trên toàn AZ
+- Endpoint policy dùng để quản lý cái gì được truy cập 
+- Chỉ có thể truy cập dịch vụ trong cùng khu vực
+
+### Interface Endpoints
+- Cho phép truy cập private tới AWS Public Services
+- Không phải HA mà chỉ được đặt vào subnet 
+- Có thể dùng Security Groups để quản lý access
+- Dùng Endpoint policies để quản lý
+- Chỉ được dùng với TCP và IPv4
+- Dùng PrivateLink
+- Dùng DNS mới cho endpoint
+
+## VPC Peering
+VPC Peering là dịch vụ để kết nối hai VPCs với nhau bằng encrypted network link
+- Có thể dùng cho cùng/khác khu vực hoặc cùng/khác tài khoản
+- Cần Route table để kết nối và cần cấu hình SGs và NACLs để cho phép kết nối
