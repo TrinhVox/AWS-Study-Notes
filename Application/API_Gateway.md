@@ -28,7 +28,8 @@ API Gateway cũng có thể dùng Custom Authorisation bằng cách lấy token 
 - Private - endpoint chỉ được truy cập trong VPC
 
 ### Stages
-API được triển khai theo giai đoạn, mỗi giai đoạn có một deployment 
+API được triển khai theo giai đoạn, mỗi giai đoạn có một deployment
+Vd: prod, dev, test
 
 ### Errors
 - 4XX- Client errors - Request từ client có lỗi 
@@ -45,4 +46,22 @@ Cache có thể có kích thước từ 500MB tới 237 GB
 
 Mặc định Cache là 300s (min 0 - max 3600s)
 
+
+### Integrations
+API Gateway có thể kết nối với Lambda, HTTP Endpoints, Step Functions, SNS, DDB
+
+Có nhiều loại integration khác nhau:
+1. MOCK - dùng cho testing và không cần kết nối backend
+2. HTTP - dùng cho HTTP Endpoint và cần dung mapping templates để chuyển thông tin cho backend
+3. HTTP Proxy - API Gateway sẽ gửi thông tin từ frontend tới backend mà không cần thay đổi thông tin 
+4. AWS - cho phép kết nối với dịch vụ của AWS - nhưng phải tự cấu hình cách API Gateway thay đổi thông tin cho AWS services
+5. AWS_Proxy (Lambda) - Cho phép gửi thông tin từ frontend tới lambda mà không cần chỉnh thông tin 
+
+#### Mapping Templates
+Dùng để cấu hình các parameters cho integration với AWS và HTTP 
+
+### OpenAPI và Swagger
+Dùng để format cho REST API - giống như cloudformation nhưng thay vì cho AWS Service thì dùng cho APIs
+
+Có thể để Input và Output parameters và cách Authenticate
 
