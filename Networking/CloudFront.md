@@ -69,3 +69,36 @@ Lambda@Edge Use Cases:
 - Migration Between S3 Origins
 - Different Objects Based on Device
 - Vary content by country
+
+### Private Distributions
+Public - là khi người dùng có thể truy cập tất cả objects qua cloudfront
+Private - là khi người dùng yêu cầu truy cập cần phải có Signed Cookie hoặc URL
+
+Có thể có cả hai public và private bằng cách dùng nhiều behaviours
+
+Để cho phép private distribution:
+- Root user phải có Cloudfront Key và account đó được thêm vào Trusted Signer
+
+Signed URL cho phép truy cập **1 object** và cho legacy distributions
+
+Signed cookies cho phép truy cập tới nhiều nhóm objects 
+
+### Cloudfront Geo-restriction 
+
+Nếu cho phép Geo-restriction, cloudfront sẽ không cho phép người dùng ở khu vực nào đó truy cập
+
+Có hai mode:
+- whitelist 
+- blacklist
+
+Cả hai mode đều chỉ cho phép dùng theo nước (country) qua country code
+
+Nếu muốn dùng restriction nhiều hơn country code thì có thể dùng 3rd party geo Location architecture
+
+### Field-level Encryption
+
+Cho phép cloudfront mã hoá thông tin tại Edge location.
+
+Cloudfront mã hoá thông tin tại edge location dùng public key. Người dùng có thể cấu hình loại thông tin nào muốn được mã hoá. Và thông tin được mã hoá sẽ được truyền cùng với các thông tin khác qua HTTPS tunnel. chỉ có thể dùng private key để giải mã thông tin. 
+
+Field-level Encryption nên được dùng cho các industry có nhiều thông tin sensitive => y tế
