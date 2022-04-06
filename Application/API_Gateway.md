@@ -41,6 +41,8 @@ Vd: prod, dev, test
 - 503 - Service Unavailable - backend không trong hoạt động
 - 504 - Integration Failure/Timeout - giới hạn trong **29s**
 
+=> https://docs.aws.amazon.com/AmazonS3/latest/API/API_Error.html  - Error codes cho S3
+
 ### Caching
 Cache có thể có kích thước từ 500MB tới 237 GB
 
@@ -65,3 +67,7 @@ Dùng để format cho REST API - giống như cloudformation nhưng thay vì ch
 
 Có thể để Input và Output parameters và cách Authenticate
 
+### Exponential Backoff
+The idea behind exponential backoff is to use progressively longer waits between retries for consecutive error responses.
+
+Exponential backoff là cách để sửa lỗi có error code 4xx, bằng cách khi gửi các requests, thời gian chờ sẽ lâu hơn giữa mỗi error responses. 
