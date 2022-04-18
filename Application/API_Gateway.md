@@ -30,6 +30,13 @@ API Gateway cũng có thể dùng Custom Authorisation bằng cách lấy token 
 ### Stages
 API được triển khai theo giai đoạn, mỗi giai đoạn có một deployment
 Vd: prod, dev, test
+Mỗi stage sẽ có một url riêng vd: https://../prod/timeline
+
+#### Stage variables
+Người dùng có thể tạo thêm Stage Variables ví dụ như: 
+ENV = PROD|| BETA || DEV
+ENV là stage variable để reference lambda aliases tại integration
+
 
 ### Errors
 - 4XX- Client errors - Request từ client có lỗi 

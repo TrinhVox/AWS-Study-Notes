@@ -52,6 +52,9 @@ Tất cả instances được thay đổi với versions mới
 Cho phép một số traffic được run với instances mới và một số với instances cũ 
 => Dùng cho A/B Testing 
 
+#### Blue/Green Deployment
+Người dùng triển khai version mới tại một environment riêng biệt, rồi đổi CNAMEs để chuyển traffic tới version mới ngay lập tức. 
+
 ### EB và RDS
 Người dùng có thể tạo một RDS instance trong một EB environment (môi trường). Và Instance đó sẽ được kết nối với EB environment. 
 
