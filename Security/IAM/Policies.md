@@ -18,3 +18,12 @@
 ### Different Account (khác tài khoản)
 
 Cần phải có sự cho phép từ hai account
+
+
+### Policies Evaluation Logic
+1. Explicit Deny
+2. Organization SCPs
+3. Resource Policies
+4. IAM Identity Boundaries
+5. Session Policies
+6. Identity Policies

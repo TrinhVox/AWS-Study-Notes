@@ -175,3 +175,39 @@ Mặc định là chỉ có management events
 IAM, STS, CloudFront => Global Service Events 
 
 Cloudtrails không phải realtime, mà sẽ bị trễ. 
+
+## Service Catalog
+
+Service Catalog là một document hoặc database được tạo bởi IT team để sắp xếp products
+
+Service Catalog sẽ bao gồm thông tin về Product Owner, Cost, Requirements, Support Information, Dependencies
+
+Service Catalog được dùng để quản lý giá cả (cost) và scale dịch vụ được deliver
+
+Service Catalog được dùng trong AWS để:
+- Self-Service Portal cho end-users - các products (sản phẩm) được cấu hình sẵn bởi admin
+- Admins được phép định nghĩa sản phẩm và tạo permissions cần thiết để triển khai (deploy)
+
+Vd:
+- Admin có thể tạo sẵn các sản phẩm và portfolio dùng CloudFormation Templates bao gồm cấu hình cho Service Catalog
+- Admin sẽ deploy portfolio vào Service Catalog và các portfolios sẽ bao gồm permissions (như là stack role) để cho phép service catalog tạo các tài nguyên cơ sở hạ tầng cho product đó 
+
+## AWS Cost Explorer
+Cost Explorer là dụng cụ cho phép người dùng xem và phân tích phí và lượng sử dụng của người dùng. 
+
+Cost Explorer cũng có thể dự báo được phí người dùng có thể sử dụng cho 12 tháng tiếp theo và gợi ý người dùng Reserved Instances có thể sử dụng
+
+## AWS Cost Allocation Tags
+Cost Allocation Tags là tính năng người dùng có thể cho phép để thêm các chỉ số trong billing reports. 
+
+Cost Allcoation Tags phải được enable individually
+
+Cost Allocation Tags có hai loại:
+1. AWS-Generated (được tạo bởi AWS) => vd. aws:createdBy hoặc aws:cloudformation:stack-name
+2. User-defined => vd. user:something
+
+Các tags có thể được xem tại cost reports và có thể dùng để làm filter 
+
+Tags không thể dùng để xem lại lịch sử mà chỉ được dùng từ khi được enable (not retrospective)
+
+
