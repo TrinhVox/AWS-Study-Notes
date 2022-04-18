@@ -83,6 +83,8 @@ Signed URL cho phép truy cập **1 object** và cho legacy distributions
 
 Signed cookies cho phép truy cập tới nhiều nhóm objects 
 
+Account Root User sẽ tạo một CloudFront Key và account đó sẽ được thêm vào thành **Trusted Signer**
+
 ### Cloudfront Geo-restriction 
 
 Nếu cho phép Geo-restriction, cloudfront sẽ không cho phép người dùng ở khu vực nào đó truy cập
@@ -93,7 +95,7 @@ Có hai mode:
 
 Cả hai mode đều chỉ cho phép dùng theo nước (country) qua country code
 
-Nếu muốn dùng restriction nhiều hơn country code thì có thể dùng 3rd party geo Location architecture
+Nếu muốn dùng restriction nhiều hơn country code thì có thể dùng 3rd party geo Location architecture và khi dùng 3rd party thì cloudfront distribution phải là private. 
 
 ### Field-level Encryption
 
@@ -102,3 +104,7 @@ Cho phép cloudfront mã hoá thông tin tại Edge location.
 Cloudfront mã hoá thông tin tại edge location dùng public key. Người dùng có thể cấu hình loại thông tin nào muốn được mã hoá. Và thông tin được mã hoá sẽ được truyền cùng với các thông tin khác qua HTTPS tunnel. chỉ có thể dùng private key để giải mã thông tin. 
 
 Field-level Encryption nên được dùng cho các industry có nhiều thông tin sensitive => y tế
+
+
+
+
