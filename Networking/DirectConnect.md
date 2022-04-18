@@ -23,3 +23,17 @@ DX không phải HA và không hỗ trợ Encryption bởi vì là Physical cabl
 - Có thể dùng tới 40Gbps với Aggregation
 - Không dùng internet nên độ trễ thấp
 - Không có Encryption
+
+
+AWS Region có **nhiều** Direct Connect Locations. Direct Connect Location được kết nối với AWS Region bằng redundant high speed connection (kết nối tốc độ cao). 
+
+Trong mỗi DX location là nhiều AWS DX Router và router này được kết nối với AWS Region conceptually. Một khi chọn DX thì người dùng sẽ được thêm port của mình vào DX Router tại DX location. 
+
+Người dùng cũng sẽ đặt Router riêng của mình (Customer hoặc provider DX Router) tại DX location. 
+
+Theo mặc định, 1 cross-connect sẽ nối DX port với customer hoặc provider router. Và sẽ được extend kết nối từ DX location tới On-premises. 
+
+## Resilience
+Để thêm tính resilience cho DX, người dùng có thể dùng 2 DX ports trên 2 DX routers nối tới 2 Customer Routers khác nhau. 
+
+Tốt hơn nếu người dùng chọn kết nối tới 2 DX location và 2 customer premises.

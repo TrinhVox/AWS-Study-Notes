@@ -25,6 +25,7 @@ Nếu muốn thiết kế Fully HA Hybrid Environment thì cần:
 - Highly Available
 ### Customer Gateway
 Được đính kèm với mạng on-premise (trên router) để kết nối với mạng từ AWS 
+
 **When to use VPN?"**
 
 **Where to use VPN?**
@@ -47,4 +48,13 @@ BGP được config cho cả hai bên (AWS và on-premise)và networks sẽ đư
 - tốc độ để set-up
 - Có thể dùng VPN là kết nối backup cho Direct Connect
 
+### Advanced Site-to-Site VPN
+VPN tunnels chỉ dùng để kết nối tới chỗ edge location gần nhất của global accelerator => độ trễ thấp hơn và throughput cao hơn
 
+Tuy nhiên acceleration chỉ có thể được cho phép khi tạo với TGW VPN thôi, không thể dùng với VPN dùng VGW
+
+Sẽ tính phí fixed công thêm data transfer
+
+
+**CGW -> TGW -> VPC (n)**
+TGW cho phép nhiều VPC truy cập 1 cặp VPN tunnels. 

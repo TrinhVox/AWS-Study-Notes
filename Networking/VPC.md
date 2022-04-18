@@ -167,13 +167,15 @@ NAT Gateway không thể áp dụng SG, chỉ có thể dùng NACL với NAT Gat
 ## VPC Flow Logs
 Chỉ có metadata, không có content
 
-Có thể được đings kèm với VPC - tất cả ENIs trong VPC
+Có thể được đính kèm với VPC - tất cả ENIs trong VPC
     - Hoặc tất cả ENIs trong subnet
     - ENI trực tiếp
 
 Flow logs không phải thòi gian thực 
 
 Log được gửi tới S3 hoặc cloudwatch logs hoặc Athena
+
+Flow log không record log tới 169.254.169.254, 169.254.169.123, DHCP, Amazon DNS server và Amazon Windows license
 
 ## VPC Endpoints
 
@@ -197,3 +199,29 @@ Log được gửi tới S3 hoặc cloudwatch logs hoặc Athena
 VPC Peering là dịch vụ để kết nối hai VPCs với nhau bằng encrypted network link
 - Có thể dùng cho cùng/khác khu vực hoặc cùng/khác tài khoản
 - Cần Route table để kết nối và cần cấu hình SGs và NACLs để cho phép kết nối
+
+## VPC Routing 
+- Mỗi subnet được liên kết với duy nhất 1 route table - có thể là vpc main table hoặc custom route table 
+- Route Table có thể được liên kêts tới IGW hoặc VGW
+- Route table có giới hạn 50 static route và 100 dynamic route 
+- Nếu có nhiều route tới cùng destination thì prefix lớn nhất sẽ được ưu tiên (vd /32 sẽ được ưu tiên so với /16)
+- Nếu route có cùng prefix thì static route sẽ được ưu tiên hơn so với propagated route
+- Nếu route đều là static route thì sẽ đi theo thứ tự ưu tiên tiếp theo:
+1. DX
+2. VPN Static
+3. VPN BGP
+4. AS_PATH
+
+## DNS and DNS Endpoints
+- DNS được dùng qua địa chỉ VPC .2 => vd: 10.16.0.2 (A4L)
+- Địa chỉ .2 được giữ lại tại mỗi subnet được gọi là Route53 Resolver
+- Lúc trước Route53 Resolver chỉ có thể truy cập được trong VPC
+- Cho tới khi có Route53 Endpoints
+
+### Route53 Endpoints
+- Dùng ENIs - có thể truy cập qua VPN hoặc DX 
+- Có 2 loại endpoints khác nhau:
+    + Inbound = dùng để forward (chuyển tiếp) từ on-premises tới R53 Resolver  
+    + Outbound = Conditional Forwarders (chuyển tiếp có điều kiện) từ R53 tới on-premises
+    + Rules control what requests are forwarded (có luật để quản lý requests nào sẽ được chuyển tiếp)
+    
