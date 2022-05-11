@@ -12,6 +12,28 @@ Dùng để chứa Session Data (Stateless Servers)
 
 Hỗ trợ MemcacheD và Redis
 
+### Memcached
+Nên dùng Memcached khi:
+Dùng cho String, objects
+- Cần model đơn giản nhất có thể 
+- Cần chạy node lớn với nhiều core và threads
+- Cần có tính năng scale-in và scale-out, thêm hoặc bỏ bớt nodes tuỳ theo nhu cầu
+- Cần cache objects
+
+### Redis 
+=> Cho phép data partition
+=> Cho phép encryption tuỳ vào version
+=> Cho phép upgrade node type
+=> Pub/Sub
+=> Backup and restore
+=> Sorted sets
+=> HA
+- Chọn 6.2 - dùng cho data tiering giữa memory và SSD
+- 6.0 nếu muốn authenticate users với role
+- 5.0 - dùng cho redis stream, cho phép thêm nhiều item mới trong thời gian thực và cho phép blocking/non-blocking
+- 4.0 cho phép encryption và thêm hoặc giảm shards 
+- 3.2 - thêm hoặc giảm shards 
+
 ### Caching Strategy
 #### Cache-aside 
 

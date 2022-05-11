@@ -30,6 +30,16 @@ Từ VPC có thể kết nối tới CloudWatch qua:
 
 ### Alarms 
 Dùng để quản lý một metric qua một thời gian và tạo ra một hoặc nhiều actions
+States:
+- OK - metric đang nằm trong threshold
+- ALARM- metric đang vượt threshold
+- INSUFFICIENT_DATA - alarm vừa được thêm vào và không đủ metric để biết được alarm state
+
+Đánh giá alarm:
+- **Period** là thời gain để đánh giá alarm cho mỗi data point của alarm
+- **Evaluation Period** là số lượng data point gần nhất để dùng cho việc đánh giá alarm 
+- **Datapoints to Alarm** là số lượng data point trong thời gian evaluation period vi phạm để kích hoạt alarm
+=> Evaluation Interval - evaluation period * Period
 
 - Alarm Resolution
 ### Logs
