@@ -7,4 +7,4 @@ SAM là một open-source framework dùng để tạo ứng dụng serverless tr
 
 Template của SAM giống với CloudFormation. Các điều khác nhau giữa SAM với CloudFormation là:
 - Transform declaration ` Transform: AWS::Serverless-2016-10-31 ` là bắt buộc trong SAM file. 
-- Globals là phần chỉ có ở SAM để định nghĩa các propoerties được dùng chung bởi các function serverless. 
+- Globals là phần chỉ có ở SAM để định nghĩa các properties được dùng chung bởi các function serverless vd: Runtime cho Function. 
