@@ -81,6 +81,17 @@ Cho phép deploy cloudformation stack với nhiều accounts và khu vực khác
 
 StackSets là containers ở trong một admin account và chứa các stack instance (stack instance chứa stacks được tạo ra ở một target account hoặc region được chọn)
 
+Admin account và target accounts phải có trust relationship trước khi dùng stack set để deploy infrastucture. 
+
+Stack set là tài nguyên theo region, nên người dùng sẽ không thể thấy hoặc thay đổi stack set tại một region khác
+
+Có hai cách để trao permissions cho stack set:
+1. Self-managed permission: 
+- người dùng tạo IAM roles cần thiết để stacksets có thể deploy trên nhiều accounts và regions
+2. Service-manged permission:
+- người dùng có thể deploy stack instancee tới accounts trong AWS Organizations. Stacksets sẽ tự động tạo các IAM roles cần thiết. Cách này có thể cho phép tự động deploy tại các accounts được thêm vào organization trong tương lai. 
+
+Stack Instance là  một reference cho stack được tạo ở target account. Stack instance có thể hoạt động độc lập ngoài một stack. Ví dụ: nếu stack không thể được tạo vì một lý do nào đó, stack instance có thể hiện lên lý do tại sao stack bị lỗi. 
 ### Deletion Policy 
 
 Người dùng có thể viết deletion policy cho mỗi resource được tạo ra bởi CFN để chỉ rỏ các actions có thể làm khi logical resource bị xoá khỏi CFN. 
